@@ -5,12 +5,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/weather', methods=['POST'])
+@app.route('/weather', methods=['GET'])
 def get_weather():
-    data = request.json  
-    city = data.get("city", "London")  
+    # data = request.json  
+    # city = data.get("city", "POST")  
 
-    url = f"http://api.weatherapi.com/v1/forecast.json?key=27f718bd98e0475e95d135306251303&q={city}&days=7&aqi=no&alerts=no"
+    url = "http://api.weatherapi.com/v1/forecast.json?key=27f718bd98e0475e95d135306251303&q=zarqa&days=7&aqi=no&alerts=no"
     response = requests.get(url).json()
     
     data = {
@@ -28,3 +28,4 @@ def get_weather():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
